@@ -1,0 +1,35 @@
+
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Table User</h4>
+        </div>
+        <div class=" card-body">
+          <div class="">
+            <table  class=""
+                    datatable [dtOptions]="dtOptions">
+              <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let ct of data">
+                <td>{{ct.last_name}}</td>
+                <td>{{ct.name}}</td>
+                <td>{{ct.email}}</td>
+                <td>{{ct.name}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
