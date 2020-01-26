@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -78,4 +80,5 @@ public class User {
     public void setDeleted(String deleted) {
         this.deleted = deleted;
     }
+
 }

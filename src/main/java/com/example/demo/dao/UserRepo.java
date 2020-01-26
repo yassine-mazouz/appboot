@@ -10,6 +10,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.awt.print.Pageable;
 import java.util.List;
@@ -23,8 +24,11 @@ public interface UserRepo extends JpaRepository<User,Integer> {
 
 
     @Query(value = "SELECT * from user", nativeQuery = true)
-    public Page<User> getAll(PageRequest page);
+    public Page<User> getAll(PageRequest pageable);
 
-    @Query(value = "SELECT * from user where id like '%:s%' or last_name like '%:s%' or name like '%:s%' or email like '%:s%'", nativeQuery = true)
-    public Page<User> getSearch(PageRequest pageable, @Param("s") String s);
+    @Query(value = "SELECT * from user  where name like %?1% or last_name like %?1% or email like %?1% ",nativeQuery = true)
+    public Page<User> getSearch( @Param("s") String s, PageRequest  pageRequest);
+
+
+
 }
