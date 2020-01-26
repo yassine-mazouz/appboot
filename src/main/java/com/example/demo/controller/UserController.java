@@ -33,7 +33,7 @@ public class UserController {
 
         String nomm = nom.getParameter("nom");
         String prenomm = prenom.getParameter("prenom");
-        String idd = prenom.getParameter("id");
+        String idd = id.getParameter("id");
         int idint=0;
         if(idd != null && idd!="")
         {
