@@ -36,7 +36,7 @@ public class UserApi {
         HashMap<String, Object> search = (HashMap<String, Object>) payload.get("search");
         String s = (String) search.get("value");
 //        HashMap<String, Object> order = (HashMap<String, Object>) payload.get("order");
-        String order = (String) payload.get("order");
+//        String order = (String) payload.get("order");
 
 //        int column = (int) order.get("column");
 //        String dir = order.get("dir").toString();
