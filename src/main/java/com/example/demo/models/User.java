@@ -12,8 +12,8 @@ public class User {
     private int id;
     @Column(name = "name", nullable = true)
     private String name;
-    @Column(name = "lastName", nullable = true)
-    private String lastName;
+    @Column(name = "lastname", nullable = true)
+    private String lastname;
     @Column(name = "email", nullable = true)
     private String email;
     @Column(name = "password", nullable = true)
@@ -40,14 +40,13 @@ public class User {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
-
 
     public String getEmail() {
         return email;

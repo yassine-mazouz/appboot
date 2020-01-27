@@ -15,6 +15,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import {UserComponent} from "../../pages/user/user.component";
+import {UseraddComponent} from "../../pages/user/useradd.component";
 import {DataTablesModule} from "angular-datatables";
 
 
@@ -34,7 +35,8 @@ import {DataTablesModule} from "angular-datatables";
     TypographyComponent,
     NotificationsComponent,
     MapComponent,
-    UserComponent
+    UserComponent,
+    UseraddComponent
 
 
     // RtlComponent

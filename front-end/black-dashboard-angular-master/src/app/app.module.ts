@@ -14,6 +14,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { Userclass } from './class/userclass';
+import {BrowserModule} from "@angular/platform-browser";
+import {DataTablesModule} from "angular-datatables";
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { Userclass } from './class/userclass';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BrowserModule,
+    DataTablesModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [],

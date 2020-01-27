@@ -4,7 +4,8 @@
     <div class=" col-md-12">
       <div class=" card">
         <div class=" card-header">
-          <h4 class=" card-title">Table User</h4>
+          <h4 class=" card-title">La Liste des utilisateurs</h4>
+          <a class="btn btn-success pull-right" routerLink="/useradd" >Ajouter</a>
         </div>
         <div class=" card-body">
           <div class=" table-responsive">
@@ -20,7 +21,7 @@
               <tbody *ngIf="user?.length != 0">
               <tr *ngFor="let us of user">
                 <td>{{ us.name }}</td>
-                <td>{{ us.lastName }}</td>
+                <td>{{ us.lastname }}</td>
                 <td>{{ us.email }}</td>
                 <td>
                   <button class=" btn btn-link"  [id]="us.id " type="button" ><i class=" tim-icons icon-pencil"></i></button>

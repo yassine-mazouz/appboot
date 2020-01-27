@@ -66,6 +66,7 @@
     "@angular/router": "8.0.2",
     "@ng-bootstrap/ng-bootstrap": "4.2.1",
     "angular-datatables": "^8.0.0",
+    "bootstrap-sweetalert": "^1.0.1",
     "chart.js": "2.8.0",
     "core-js": "3.1.4",
     "datatables.net": "^1.10.20",

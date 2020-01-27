@@ -18,9 +18,9 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/user",
     title: "User",
-    rtlTitle: "لوحة القيادة",
+    rtlTitle: "المستخدم",
     icon: "icon-single-02",
-    class: ""
+    class: "menuuser"
   },
   {
     path: "/icons",
@@ -43,13 +43,13 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
 
-  {
-    path: "/user",
-    title: "User Profile",
-    rtlTitle: "ملف تعريفي للمستخدم",
-    icon: "icon-single-02",
-    class: ""
-  },
+  // {
+  //   path: "/user",
+  //   title: "User Profile",
+  //   rtlTitle: "ملف تعريفي للمستخدم",
+  //   icon: "icon-single-02",
+  //   class: ""
+  // },
   {
     path: "/tables",
     title: "Table List",

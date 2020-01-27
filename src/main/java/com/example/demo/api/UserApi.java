@@ -78,31 +78,17 @@ public class UserApi {
 
     }
 
-
+    @PostMapping(value = "/createuser")
+    public String createuser(@RequestBody User user){
+        userRepo.save(user);
+        return "Hi "+user.getName()+" registration successfully";
+    }
 
     @RequestMapping(value = "/getAllRest", method = RequestMethod.GET)
     public List<User> getAll(){
         return  userRepo.findAll();
     }
 
-    @RequestMapping(value = "/addUserRest/{nom}/{prenom}/{id}", method = RequestMethod.PUT)
-    public void addUserRest(@PathVariable String nom, @PathVariable String prenom, @PathVariable int id) throws JsonProcessingException {
-
-
-        if(id != 0) {
-            User saveusr = userRepo.findById(id).get();
-            saveusr.setName(prenom);
-            saveusr.setLastName(nom);
-            userRepo.save(saveusr);
-
-        }else {
-            User saveusr = new User();
-            saveusr.setName(prenom);
-            saveusr.setLastName(nom);
-
-            userRepo.save(saveusr);
-        }
-    }
 
     @RequestMapping(value = "/deleteUserRest/{id}", method = RequestMethod.PUT)
     public void deleteUserRest(@PathVariable int id) throws JsonProcessingException {

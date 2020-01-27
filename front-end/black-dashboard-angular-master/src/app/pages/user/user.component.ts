@@ -12,18 +12,6 @@ import {Datatablesclass} from "../../class/datatablesclass";
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-
-    DataTablesModule
-  ],
-  providers: [],
-  bootstrap: [ AppComponent ]
-})
 export class UserComponent implements OnInit {
 
   title = 'angulardatatables';
@@ -32,6 +20,7 @@ export class UserComponent implements OnInit {
   data: any;
   // constructor(private activeRoute:ActivatedRoute , public userService:ServicesuserService
   //   ,private router :Router,private http: HttpClient) { }
+
     constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -56,7 +45,7 @@ export class UserComponent implements OnInit {
           });
         });
       },
-      columns: [{ data: 'name' }, { data: 'lastName' }, { data: 'email' }, { data: 'id' }]
+      columns: [{ data: 'name' }, { data: 'lastname' }, { data: 'email' }, { data: 'id' }]
     };
 
 
