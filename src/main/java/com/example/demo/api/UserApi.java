@@ -35,22 +35,22 @@ public class UserApi {
         String s = (String) search.get("value");
 
         ArrayList<HashMap<String, String>> order = (ArrayList<HashMap<String, String>>) payload.get("order");
+        ArrayList<HashMap<String, Integer>> order1 = (ArrayList<HashMap<String, Integer>>) payload.get("order");
 
         String dir = order.get(0).get("dir");
-//        String column = order.get(0).get(0).get("value");
+       Integer column = order1.get(0).get("column");
 
-//        String sort="id";
-//        if(column==1){sort="name";}
-//        if(column==2){sort="lastName";}
-//        if(column==3){sort="email";}
+        String sort="id";
+        if(column==1){sort="name";}
+        if(column==2){sort="lastName";}
+        if(column==3){sort="email";}
 
         int page = start / length;
 
         PageRequest  pageable = PageRequest.of(
                 page,
-                length
-//                ,
-//                Sort.by(sort)
+                length,
+                Sort.by(sort)
         );
         Page<User> responseData;
 
