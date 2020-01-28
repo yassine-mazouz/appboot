@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
@@ -17,6 +17,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import {UserComponent} from "../../pages/user/user.component";
 import {UseraddComponent} from "../../pages/user/useradd.component";
 import {DataTablesModule} from "angular-datatables";
+import {UserupdateComponent} from "../../pages/user/userupdate.component";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {DataTablesModule} from "angular-datatables";
     HttpClientModule,
     NgbModule,
     DataTablesModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     DashboardComponent,
@@ -36,7 +38,8 @@ import {DataTablesModule} from "angular-datatables";
     NotificationsComponent,
     MapComponent,
     UserComponent,
-    UseraddComponent
+    UseraddComponent,
+    UserupdateComponent
 
 
     // RtlComponent

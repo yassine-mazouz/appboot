@@ -5,6 +5,9 @@ import {AppComponent} from "../../app.component";
 import {HttpClient} from "@angular/common/http";
 import {Userclass} from "../../class/userclass";
 import {Datatablesclass} from "../../class/datatablesclass";
+import {Router} from "@angular/router";
+import {Validators} from "@angular/forms";
+import {ServicesuserService} from "../../services/servicesuser.service";
 
 
 @Component({
@@ -21,9 +24,10 @@ export class UserComponent implements OnInit {
   // constructor(private activeRoute:ActivatedRoute , public userService:ServicesuserService
   //   ,private router :Router,private http: HttpClient) { }
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private router: Router,private servicesuserService :ServicesuserService) { }
 
   ngOnInit() {
+
     //Datatable
     const that = this;
     this.dtOptions = {
@@ -52,4 +56,14 @@ export class UserComponent implements OnInit {
 
     }
 
+  editUser(id: number) {
+    window.localStorage.removeItem("editUserId");
+    window.localStorage.setItem("editUserId", id.toString());
+    this.router.navigate(['userupdate']);
+  }
+
+
+  deleteUser(id: number) {
+
+  }
 }

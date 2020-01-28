@@ -21,4 +21,18 @@ export class ServicesuserService {
   {
     return this.http.post(`${this.baseUrl}/createuser`,userclass,{responseType : 'text' as 'json'});
   }
+
+  getUserById(id: string): Observable<any> {
+    return this.http.get<Userclass[]>(`${this.baseUrl}/GetOneUserRest/`+id);
+  }
+
+  updateUser(userclass:Userclass ) {
+    return this.http.post<Userclass[]>(`${this.baseUrl}/updateuser/`+userclass.id, userclass,{responseType : 'text' as 'json'});
+
+  }
+
+  deleteUser(userclass: Userclass) {
+    return this.http.post<Userclass[]>(`${this.baseUrl}/deleteUserRest/`+userclass.id,{responseType : 'text' as 'json'});
+
+  }
 }

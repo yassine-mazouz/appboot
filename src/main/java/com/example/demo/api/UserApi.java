@@ -84,6 +84,18 @@ public class UserApi {
         return "Hi "+user.getName()+" registration successfully";
     }
 
+    @PostMapping("/updateuser/{id}")
+    public String updateuser(@RequestBody User user) {
+
+        user.setName(user.getName());
+        user.setLastname(user.getLastname());
+        user.setEmail(user.getEmail());
+        user.setPassword(user.getPassword());
+        user.setRole(user.getRole());
+        userRepo.save(user);
+        return "Hi "+user.getName()+" User updated successfully.";
+    }
+
     @RequestMapping(value = "/getAllRest", method = RequestMethod.GET)
     public List<User> getAll(){
         return  userRepo.findAll();

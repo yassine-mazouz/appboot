@@ -5,7 +5,7 @@
       <div class=" card">
         <div class=" card-header"><h5 class=" title">Ajouter Nouvel Utilisateur</h5></div>
         <div class=" card-body">
-          <form>
+          <form [formGroup]="addForm">
             <div class=" row">
               <div class=" col-md-6 pr-md-1">
                 <div class=" form-group" >
@@ -16,6 +16,7 @@
                     type="text"
                     [(ngModel)]="userclass.name"
                     name="name"
+                    formControlName="name"
                   />
                 </div>
               </div>
@@ -28,6 +29,8 @@
                     type="text"
                     [(ngModel)]="userclass.lastname"
                     name="lastname"
+                    formControlName="lastname"
+                    required=""
                   />
                 </div>
               </div>
@@ -35,20 +38,21 @@
             <div class=" row">
               <div class=" col-md-6 pr-md-1">
                 <div class=" form-group">
-                  <label for="exampleInputEmail1"> Email </label>
+                  <label> Email </label>
                   <input
                     class=" form-control"
                     placeholder="email"
                     type="email"
                     [(ngModel)]="userclass.email"
                     name="email"
+                    formControlName="email"
                   />
                 </div>
               </div>
               <div class=" col-md-6 pl-md-1">
                 <div class=" form-group formselect">
                   <label> Rôle </label>
-                <select class="form-control" [(ngModel)]="userclass.role" name="role">
+                <select class="form-control" formControlName="role" [(ngModel)]="userclass.role" name="role">
                   <option selected value="">Choisir...</option>
                   <option value="0">Admin</option>
                   <option value="1">User</option>
@@ -66,6 +70,7 @@
                       type="password"
                       [(ngModel)]="userclass.password"
                       name="password"
+                      formControlName="password"
                     />
                   </div>
                 </div>
