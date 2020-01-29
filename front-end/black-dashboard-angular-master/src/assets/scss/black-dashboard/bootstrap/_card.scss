@@ -8,9 +8,9 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: $card-bg;
+  background-color: transparent !important;
   background-clip: border-box;
-  border: $card-border-width solid $card-border-color;
+  border: 1px solid rgb(188, 188, 192) !important;
   @include border-radius($card-border-radius);
 
   > hr {

@@ -26,7 +26,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Query(value = "SELECT * from user", nativeQuery = true)
     public Page<User> getAll(PageRequest pageable);
 
-    @Query(value = "SELECT * from user  where name like %?1% or last_name like %?1% or email like %?1% ",nativeQuery = true)
+    @Query(value = "SELECT * from user  where name like %?1% or lastname like %?1% or email like %?1% ",nativeQuery = true)
     public Page<User> getSearch( @Param("s") String s, PageRequest  pageRequest);
 
 

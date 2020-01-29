@@ -8,12 +8,12 @@ import {Datatablesclass} from "../../class/datatablesclass";
 import {Router} from "@angular/router";
 import {Validators} from "@angular/forms";
 import {ServicesuserService} from "../../services/servicesuser.service";
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  templateUrl: 'user.component.html',
+  styleUrls: ['user.component.scss']
 })
 export class UserComponent implements OnInit {
 
@@ -34,6 +34,7 @@ export class UserComponent implements OnInit {
       pagingType: 'full_numbers',
       serverSide: true,
       processing: true,
+      lengthMenu: [5, 10, 20, 50, 100, 200, 500],
       ajax: (dataTablesParameters: any, callback) => {
         that.http
           .post<Datatablesclass>(
@@ -65,5 +66,45 @@ export class UserComponent implements OnInit {
 
   deleteUser(id: number) {
 
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+
+      if (result.value) {
+
+        this.servicesuserService.deleteUser(id)
+          .subscribe( data => {
+            $('#datatable').DataTable().ajax.reload();
+          })
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
   }
 }

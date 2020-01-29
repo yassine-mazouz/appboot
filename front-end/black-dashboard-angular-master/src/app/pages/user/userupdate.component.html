@@ -7,7 +7,7 @@
         <div class=" card-body">
           <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
-                <div class=" form-group hidden" >
+                <div class=" form-group" style="display: none" >
                   <label> id </label>
                   <input
                     class=" form-control"
@@ -28,7 +28,11 @@
                     type="text"
                     name="name"
                     formControlName="name"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
                   />
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Nom is required</div>
+                  </div>
                 </div>
               </div>
               <div class=" col-md-6 pr-md-1">
@@ -41,7 +45,11 @@
                     name="lastname"
                     formControlName="lastname"
                     required=""
+                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
                   />
+                  <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastname.errors.required">Prénom is required</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -55,17 +63,25 @@
                     type="email"
                     name="email"
                     formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
                   />
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                  </div>
                 </div>
               </div>
               <div class=" col-md-6 pl-md-1">
                 <div class=" form-group formselect">
                   <label> Rôle </label>
-                  <select class="form-control" formControlName="role" name="role">
+                  <select class="form-control" formControlName="role" name="role"
+                   [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
                     <option selected value="">Choisir...</option>
                     <option value="0">Admin</option>
                     <option value="1">User</option>
                   </select>
+                  <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                    <div *ngIf="f.role.errors.required">Rôle is required</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -79,7 +95,11 @@
                     type="password"
                     name="password"
                     formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                   />
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.role.errors.required">Password is required</div>
+                  </div>
                 </div>
               </div>
               <div class=" col-md-6 pr-md-1">
@@ -89,7 +109,12 @@
                     class=" form-control"
                     placeholder="confirmer password"
                     type="password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                   />
+
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.role.errors.required">Password is required</div>
+                  </div>
                 </div>
               </div>
             </div>

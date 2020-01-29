@@ -31,8 +31,8 @@ export class ServicesuserService {
 
   }
 
-  deleteUser(userclass: Userclass) {
-    return this.http.post<Userclass[]>(`${this.baseUrl}/deleteUserRest/`+userclass.id,{responseType : 'text' as 'json'});
+  deleteUser(id: number): Observable<any>  {
+    return this.http.post<Userclass[]>(`${this.baseUrl}/deleteUserRest/`+id,{responseType : 'text' as 'json'});
 
   }
 }

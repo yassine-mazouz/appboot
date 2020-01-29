@@ -102,13 +102,11 @@ public class UserApi {
     }
 
 
-    @RequestMapping(value = "/deleteUserRest/{id}", method = RequestMethod.PUT)
+    @PostMapping("/deleteUserRest/{id}")
     public void deleteUserRest(@PathVariable int id) throws JsonProcessingException {
 
-        if(id != 0) {
             userRepo.deleteById(id);
 
-        }
     }
     @RequestMapping(value = "/GetOneUserRest/{id}", method = RequestMethod.GET)
     public User GetOneUserRest(@PathVariable int id){

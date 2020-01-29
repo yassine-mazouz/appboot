@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+   server-side-angular-way.component.css
+*/
+.no-data-available {
+  text-align: center;
+}
+
+/*
+   src/styles.css (i.e. your global style)
+*/
+.dataTables_empty {
+  display: none;
+}
+//datatable processing
+div#datatable_processing {
+  background-color: #1d1e27 !important;
+  color: #72e5c5 !important;
+}
+//pagination
+.paginate_button a {
+  background-color: #1e1e27 !important;
+  color: white !important;
+}

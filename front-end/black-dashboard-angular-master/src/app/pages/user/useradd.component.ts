@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {ServicesuserService} from "../../services/servicesuser.service";
 import {Userclass} from "../../class/userclass";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
+
 
 @Component({
   selector: "app-user",
@@ -13,6 +15,8 @@ export class UseraddComponent implements OnInit {
 
   userclass:Userclass = new Userclass();
   addForm: FormGroup;
+  submitted = false;
+
   constructor(private formBuilder: FormBuilder,private servicesuserService :ServicesuserService, private  router :Router) {}
 
   ngOnInit() {
@@ -24,27 +28,38 @@ export class UseraddComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       role: ['', Validators.required],
-      deleted: ['', Validators.required]
+      deleted: ['']
     });
 
   }
+  // convenience getter for easy access to form fields
+  get f() { return this.addForm.controls; }
 
-  deleteFile(file: any) {
+  onSubmit() {
+    this.submitted = true;
+    if (this.addForm.invalid) {
+      alert("gg");
+      return;
+    }
+    this.servicesuserService.createUser(this.addForm.value).subscribe(data=>{
+      Swal.fire({
+        icon: 'success',
+        title: 'Your work has been saved',
+        showClass: {
+          popup: 'animated fadeInDown faster'
+        },
+        hideClass: {
+          popup: 'animated fadeOutUp faster'
+        }
+      }).then((result) => {
+        if (result.value) {
+          this.router.navigate(["/user"])
+        }
+      })
 
-  }
 
-  save() {
-    this.servicesuserService.createUser(this.userclass).subscribe(data=>{
-      this.userclass = new Userclass();
-      this.goTolist();
-      },err=>{
+    },err=>{
       alert('Error');
     })
   }
-
-  goTolist()
-  {
-    this.router.navigate(["/user"])
-  }
-
 }
