@@ -18,18 +18,20 @@ import {UserComponent} from "../../pages/user/user.component";
 import {UseraddComponent} from "../../pages/user/useradd.component";
 import {DataTablesModule} from "angular-datatables";
 import {UserupdateComponent} from "../../pages/user/userupdate.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    HttpClientModule,
-    NgbModule,
-    DataTablesModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        DataTablesModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+    ],
   declarations: [
     DashboardComponent,
     TablesComponent,

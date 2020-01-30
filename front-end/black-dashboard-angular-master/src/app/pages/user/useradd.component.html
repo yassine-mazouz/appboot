@@ -53,11 +53,18 @@
                     type="email"
                     [(ngModel)]="userclass.email"
                     name="email"
+                    id="email"
                     formControlName="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
                   />
                   <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">Email is required</div>
+                  </div>
+                  <div *ngIf="f.email.errors &&(f.email.touched || f.email.dirty)" class ="invalid-feedback">
+                    <div [hidden]="!f.email.errors?.pattern">
+                      <div>Invalid Email</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -90,7 +97,7 @@
                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                     />
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                      <div *ngIf="f.role.errors.required">Password is required</div>
+                      <div *ngIf="f.password.errors.required">Password is required</div>
                     </div>
                   </div>
                 </div>
@@ -101,11 +108,19 @@
                       class=" form-control"
                       placeholder="confirmer password"
                       type="password"
-                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                      formControlName="confirmpassword"
+
+                      [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors}"
                     />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                      <div *ngIf="f.role.errors.required">Password is required</div>
+                    <div *ngIf="submitted && f.confirmpassword.errors"  class="invalid-feedback">
+                      <div *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
                     </div>
+                    <div *ngIf="addForm.hasError('notSame', 'password')" class="invalid-feedback">
+                      <div *ngIf="f.confirmpassword.errors.required">Error in Confirm Password</div>
+                    </div>
+                    <mat-error *ngIf="addForm.hasError('notSame')">
+                      Passwords do not match
+                    </mat-error>
                   </div>
                 </div>
 

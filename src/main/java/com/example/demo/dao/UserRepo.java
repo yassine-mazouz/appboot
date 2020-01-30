@@ -29,6 +29,12 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Query(value = "SELECT * from user  where name like %?1% or lastname like %?1% or email like %?1% ",nativeQuery = true)
     public Page<User> getSearch( @Param("s") String s, PageRequest  pageRequest);
 
+    @Query(value = "SELECT count(id) from user where email like ?1",nativeQuery = true)
+    public int checkmail( @Param("s") String s);
+
+
+    @Query(value = "SELECT count(id) from user where email like ?1 and id!=?2",nativeQuery = true)
+    public User checkmailedit( @Param("s") String s,@Param("id") int id);
 
 
 }

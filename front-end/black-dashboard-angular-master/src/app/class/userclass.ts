@@ -5,5 +5,6 @@ export class Userclass {
   email: string;
   deleted: string;
   password : string;
+  confirmpassword : string;
   role : string;
 }

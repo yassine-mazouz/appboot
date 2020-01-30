@@ -91,6 +91,7 @@ public class UserApi {
         user.setLastname(user.getLastname());
         user.setEmail(user.getEmail());
         user.setPassword(user.getPassword());
+        user.setConfirmpassword(user.getConfirmpassword());
         user.setRole(user.getRole());
         userRepo.save(user);
         return "Hi "+user.getName()+" User updated successfully.";
@@ -111,5 +112,15 @@ public class UserApi {
     @RequestMapping(value = "/GetOneUserRest/{id}", method = RequestMethod.GET)
     public User GetOneUserRest(@PathVariable int id){
         return  userRepo.getOneUser(id);
+    }
+
+    @RequestMapping(value = "/chackmail/{val}", method = RequestMethod.GET)
+    public int chackmail(@PathVariable String val){
+        return  userRepo.checkmail(val);
+    }
+    @PostMapping(value = "/checkmailedit/id")
+    public User checkmailedit(@PathVariable String id) throws JsonProcessingException {
+          String val = userRepo.getOneUser(Integer.parseInt(id)).getEmail();
+        return  userRepo.checkmailedit(val,(Integer.parseInt(id)));
     }
 }

@@ -1,10 +1,20 @@
 import { Component, OnInit } from "@angular/core";
-import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {ServicesuserService} from "../../services/servicesuser.service";
 import {Userclass} from "../../class/userclass";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {ErrorStateMatcher} from "@angular/material/core";
 
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+
+    return (invalidCtrl || invalidParent);
+  }
+}
 
 @Component({
   selector: "app-user",
@@ -16,6 +26,10 @@ export class UseraddComponent implements OnInit {
   userclass:Userclass = new Userclass();
   addForm: FormGroup;
   submitted = false;
+  matcher = new MyErrorStateMatcher();
+
+
+
 
   constructor(private formBuilder: FormBuilder,private servicesuserService :ServicesuserService, private  router :Router) {}
 
@@ -28,9 +42,17 @@ export class UseraddComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       role: ['', Validators.required],
-      deleted: ['']
-    });
+      deleted: [''],
+      confirmpassword: ['', Validators.required]
+    }, {validator: this.checkPasswords });
 
+  }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.get('password').value;
+    let confirmPass = group.get('confirmpassword').value;
+
+    return pass === confirmPass ? null : { notSame: true }
   }
   // convenience getter for easy access to form fields
   get f() { return this.addForm.controls; }
@@ -38,28 +60,43 @@ export class UseraddComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.addForm.invalid) {
-      alert("gg");
       return;
     }
-    this.servicesuserService.createUser(this.addForm.value).subscribe(data=>{
-      Swal.fire({
-        icon: 'success',
-        title: 'Your work has been saved',
-        showClass: {
-          popup: 'animated fadeInDown faster'
-        },
-        hideClass: {
-          popup: 'animated fadeOutUp faster'
-        }
-      }).then((result) => {
-        if (result.value) {
-          this.router.navigate(["/user"])
-        }
-      })
 
 
-    },err=>{
-      alert('Error');
-    })
+    this.servicesuserService.checkmail($('#email').val())
+      .subscribe( data => {
+
+        if(data!=0){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'This email existe déja!'
+          })
+        }else{
+          this.servicesuserService.createUser(this.addForm.value).subscribe(data=>{
+            Swal.fire({
+              icon: 'success',
+              title: 'Your work has been saved',
+              showClass: {
+                popup: 'animated fadeInDown faster'
+              },
+              hideClass: {
+                popup: 'animated fadeOutUp faster'
+              }
+            }).then((result) => {
+              if (result.value) {
+                this.router.navigate(["/user"])
+              }
+            })
+
+
+          },err=>{
+            alert('Error');
+          })
+        }
+      });
   }
+
+
 }

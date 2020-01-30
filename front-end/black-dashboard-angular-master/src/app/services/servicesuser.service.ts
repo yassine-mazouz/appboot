@@ -35,4 +35,17 @@ export class ServicesuserService {
     return this.http.post<Userclass[]>(`${this.baseUrl}/deleteUserRest/`+id,{responseType : 'text' as 'json'});
 
   }
+
+  checkmail(val: string | number | string[]): Observable<any>  {
+    return this.http.get<Userclass[]>(`${this.baseUrl}/chackmail/`+val);
+  }
+
+
+  checkmailedit(id: string): Observable<any> {
+    return this.http.post<Userclass[]>(`${this.baseUrl}/checkmailedit/`+id, {responseType: 'text' as 'json'});
+
+  }
+
+
+
 }

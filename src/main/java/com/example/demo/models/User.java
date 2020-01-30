@@ -18,6 +18,8 @@ public class User {
     private String email;
     @Column(name = "password", nullable = true)
     private String password;
+    @Column(name = "confirmpassword", nullable = true)
+    private String confirmpassword;
     @Column(name = "role", nullable = true)
     private String role;
     @Column(name = "deleted", nullable = true)
@@ -80,4 +82,11 @@ public class User {
         this.deleted = deleted;
     }
 
+    public String getConfirmpassword() {
+        return confirmpassword;
+    }
+
+    public void setConfirmpassword(String confirmpassword) {
+        this.confirmpassword = confirmpassword;
+    }
 }

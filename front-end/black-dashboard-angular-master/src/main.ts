@@ -1,3 +1,4 @@
+import 'hammerjs';
 /*
  =========================================================
  * Black Dashboard Angular - v1.0.0

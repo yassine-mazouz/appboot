@@ -24,6 +24,10 @@ export class UserupdateComponent implements OnInit {
       this.router.navigate(['list-user']);
       return;
     }
+    this.servicesuserService.getUserById(userId)
+      .subscribe( data => {
+        this.editForm.setValue(data);
+      });
     this.editForm = this.formBuilder.group({
       id: [''],
       name: ['', Validators.required],
@@ -31,12 +35,17 @@ export class UserupdateComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       role: ['', Validators.required],
-      deleted: ['']
-    });
-    this.servicesuserService.getUserById(userId)
-      .subscribe( data => {
-        this.editForm.setValue(data);
-      });
+      deleted: [''],
+      confirmpassword: ['', Validators.required]
+    }, {validator: this.checkPasswords });
+
+  }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.get('password').value;
+    let confirmPass = group.get('confirmpassword').value;
+
+    return pass === confirmPass ? null : { notSame: true }
   }
   get f() { return this.editForm.controls; }
   onSubmit() {
@@ -44,30 +53,41 @@ export class UserupdateComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
+    this.servicesuserService.checkmailedit($("#id").val().toString())
+      .subscribe( check => {
 
-    this.servicesuserService.updateUser(this.editForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-
+        if (check != 0) {
           Swal.fire({
-            icon: 'success',
-            title: 'your work has been edited',
-            showClass: {
-              popup: 'animated fadeInDown faster'
-            },
-            hideClass: {
-              popup: 'animated fadeOutUp faster'
-            }
-          }).then((result) => {
-            if (result.value) {
-              this.router.navigate(["/user"])
-            }
+            icon: 'error',
+            title: 'Oops...',
+            text: 'This email existe déja!'
           })
-        },
-        error => {
-          alert(error);
-        });
+        } else {
+          this.servicesuserService.updateUser(this.editForm.value)
+            .pipe(first())
+            .subscribe(
+              data => {
+
+                Swal.fire({
+                  icon: 'success',
+                  title: 'your work has been edited',
+                  showClass: {
+                    popup: 'animated fadeInDown faster'
+                  },
+                  hideClass: {
+                    popup: 'animated fadeOutUp faster'
+                  }
+                }).then((result) => {
+                  if (result.value) {
+                    this.router.navigate(["/user"])
+                  }
+                })
+              },
+              error => {
+                alert(error);
+              });
+        }
+      })
 
 
 
