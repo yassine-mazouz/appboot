@@ -16,18 +16,18 @@ export class ServicescategoriesService {
 
 
 
-  createLocation( locationclass:Locationclass) {
-    return this.http.post(`${this.baseUrl}/createlocation`,locationclass,{responseType : 'text' as 'json'});
+  createCategories( categoriesclass:Categoriesclass) {
+    return this.http.post(`${this.baseUrl}/createcategories`,categoriesclass,{responseType : 'text' as 'json'});
 
   }
 
-  getLocationById(Id: string): Observable<any>  {
-    return this.http.get<Locationclass[]>(`${this.baseUrl}/GetOneLocationRest/`+Id);
+  getCategoriesById(Id: string): Observable<any>  {
+    return this.http.get<Categoriesclass[]>(`${this.baseUrl}/GetOneCategoriesRest/`+Id);
 
   }
 
-  updateLocation(locationclass:Locationclass) {
-    return this.http.post<Locationclass[]>(`${this.baseUrl}/updatelocation/`+locationclass.id, locationclass,{responseType : 'text' as 'json'});
+  updateCategories(categoriesclass:Categoriesclass) {
+    return this.http.post<Locationclass[]>(`${this.baseUrl}/updatecategories/`+categoriesclass.id, categoriesclass,{responseType : 'text' as 'json'});
 
   }
 
@@ -35,4 +35,7 @@ export class ServicescategoriesService {
     return this.http.post<Categoriesclass[]>(`${this.baseUrl}/deleteCategoriesRest/`+id,{responseType : 'text' as 'json'});
 
   }
+
+
+
 }

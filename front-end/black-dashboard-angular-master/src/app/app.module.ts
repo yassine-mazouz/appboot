@@ -2,6 +2,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
 
@@ -16,8 +17,6 @@ import { ComponentsModule } from "./components/components.module";
 import { Userclass } from './class/userclass';
 import {BrowserModule} from "@angular/platform-browser";
 import {DataTablesModule} from "angular-datatables";
-import { CategoriesaddComponent } from './pages/categories/categoriesadd/categoriesadd.component';
-import { CategoriesupdateComponent } from './pages/categories/categoriesupdate/categoriesupdate.component';
 
 @NgModule({
   imports: [
@@ -32,7 +31,7 @@ import { CategoriesupdateComponent } from './pages/categories/categoriesupdate/c
     BrowserModule,
     DataTablesModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CategoriesaddComponent, CategoriesupdateComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

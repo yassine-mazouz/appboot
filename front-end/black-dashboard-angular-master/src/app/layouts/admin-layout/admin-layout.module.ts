@@ -22,6 +22,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {LocationaddComponent} from "../../pages/map/locationadd/locationadd.component";
 import {LocationupdateComponent} from "../../pages/map/locationupdate/locationupdate.component";
 import {CategoriesComponent} from "../../pages/categories/categories.component";
+import {CategoriesaddComponent} from "../../pages/categories/categoriesadd/categoriesadd.component";
+import {CategoriesupdateComponent} from "../../pages/categories/categoriesupdate/categoriesupdate.component";
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import {CategoriesComponent} from "../../pages/categories/categories.component";
     UserupdateComponent,
     LocationaddComponent,
     LocationupdateComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CategoriesaddComponent,
+    CategoriesupdateComponent
 
 
     // RtlComponent

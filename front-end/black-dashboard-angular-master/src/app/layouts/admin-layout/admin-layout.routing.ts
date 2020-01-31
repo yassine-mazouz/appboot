@@ -12,6 +12,8 @@ import {UserupdateComponent} from "../../pages/user/userupdate.component";
 import {LocationaddComponent} from "../../pages/map/locationadd/locationadd.component";
 import {LocationupdateComponent} from "../../pages/map/locationupdate/locationupdate.component";
 import {CategoriesComponent} from "../../pages/categories/categories.component";
+import {CategoriesaddComponent} from "../../pages/categories/categoriesadd/categoriesadd.component";
+import {CategoriesupdateComponent} from "../../pages/categories/categoriesupdate/categoriesupdate.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
@@ -27,6 +29,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: "locationadd", component: LocationaddComponent },
   { path: "locationupdate", component: LocationupdateComponent },
   { path: "categories", component: CategoriesComponent },
+  { path: "categoriesadd", component: CategoriesaddComponent },
+  { path: "categoriesupdate", component: CategoriesupdateComponent },
   // { path: "rtl", component: RtlComponent }
 
 ];

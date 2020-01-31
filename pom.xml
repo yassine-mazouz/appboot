@@ -28,6 +28,16 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>com.eimapi</groupId>
+            <artifactId>file-service-fs</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.roufid.tutorials</groupId>
+            <artifactId>example-app</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
