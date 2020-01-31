@@ -118,9 +118,8 @@ public class UserApi {
     public int chackmail(@PathVariable String val){
         return  userRepo.checkmail(val);
     }
-    @PostMapping(value = "/checkmailedit/id")
-    public User checkmailedit(@PathVariable String id) throws JsonProcessingException {
-          String val = userRepo.getOneUser(Integer.parseInt(id)).getEmail();
-        return  userRepo.checkmailedit(val,(Integer.parseInt(id)));
+    @RequestMapping(value = "/checkmailedit/{email}/{id}" , method = RequestMethod.GET)
+    public int checkmailedit(@PathVariable String email,@PathVariable int id){
+        return  userRepo.checkmailedit(email,id);
     }
 }

@@ -16,6 +16,8 @@ import { ComponentsModule } from "./components/components.module";
 import { Userclass } from './class/userclass';
 import {BrowserModule} from "@angular/platform-browser";
 import {DataTablesModule} from "angular-datatables";
+import { CategoriesaddComponent } from './pages/categories/categoriesadd/categoriesadd.component';
+import { CategoriesupdateComponent } from './pages/categories/categoriesupdate/categoriesupdate.component';
 
 @NgModule({
   imports: [
@@ -30,7 +32,7 @@ import {DataTablesModule} from "angular-datatables";
     BrowserModule,
     DataTablesModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CategoriesaddComponent, CategoriesupdateComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

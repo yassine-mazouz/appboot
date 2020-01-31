@@ -34,7 +34,7 @@ public interface UserRepo extends JpaRepository<User,Integer> {
 
 
     @Query(value = "SELECT count(id) from user where email like ?1 and id!=?2",nativeQuery = true)
-    public User checkmailedit( @Param("s") String s,@Param("id") int id);
+    public int checkmailedit( @Param("s") String s,@Param("id") int id);
 
 
 }

@@ -21,7 +21,7 @@ export class UserupdateComponent implements OnInit {
     $(".menuuser").addClass("active");
     let userId = window.localStorage.getItem("editUserId");
     if(!userId) {
-      this.router.navigate(['list-user']);
+      this.router.navigate(['user']);
       return;
     }
     this.servicesuserService.getUserById(userId)
@@ -53,10 +53,11 @@ export class UserupdateComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
-    this.servicesuserService.checkmailedit($("#id").val().toString())
+    this.servicesuserService.checkmailedit($("#email").val(),$("#id").val())
       .subscribe( check => {
 
-        if (check != 0) {
+        // @ts-ignore
+        if(check != 0) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

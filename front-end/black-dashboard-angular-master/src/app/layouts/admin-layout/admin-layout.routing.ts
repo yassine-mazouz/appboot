@@ -9,6 +9,9 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import {UserComponent} from "../../pages/user/user.component";
 import {UseraddComponent} from "../../pages/user/useradd.component";
 import {UserupdateComponent} from "../../pages/user/userupdate.component";
+import {LocationaddComponent} from "../../pages/map/locationadd/locationadd.component";
+import {LocationupdateComponent} from "../../pages/map/locationupdate/locationupdate.component";
+import {CategoriesComponent} from "../../pages/categories/categories.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
@@ -21,6 +24,9 @@ export const AdminLayoutRoutes: Routes = [
   { path: "notifications", component: NotificationsComponent },
   { path: "tables", component: TablesComponent },
   { path: "typography", component: TypographyComponent },
+  { path: "locationadd", component: LocationaddComponent },
+  { path: "locationupdate", component: LocationupdateComponent },
+  { path: "categories", component: CategoriesComponent },
   // { path: "rtl", component: RtlComponent }
 
 ];

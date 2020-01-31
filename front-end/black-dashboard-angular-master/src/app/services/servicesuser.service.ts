@@ -41,11 +41,8 @@ export class ServicesuserService {
   }
 
 
-  checkmailedit(id: string): Observable<any> {
-    return this.http.post<Userclass[]>(`${this.baseUrl}/checkmailedit/`+id, {responseType: 'text' as 'json'});
+  checkmailedit(val: string | number | string[], val2: string | number | string[]) {
+    return this.http.get<Userclass[]>(`${this.baseUrl}/checkmailedit/`+val+'/'+val2);
 
   }
-
-
-
 }

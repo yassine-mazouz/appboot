@@ -1,30 +1,22 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { DataTablesModule } from 'angular-datatables';
-import {AppComponent} from "../../app.component";
+import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Userclass} from "../../class/userclass";
-import {Datatablesclass} from "../../class/datatablesclass";
 import {Router} from "@angular/router";
-import {Validators} from "@angular/forms";
-import {ServicesuserService} from "../../services/servicesuser.service";
-import Swal from 'sweetalert2'
+import {ServicescategoriesService} from "../../services/servicescategories.service";
+import {Categoriesclass} from "../../class/categoriesclass";
+import {Datatablesclass} from "../../class/datatablesclass";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-user',
-  templateUrl: 'user.component.html',
-  styleUrls: ['user.component.scss']
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.scss']
 })
-export class UserComponent implements OnInit {
-
-
+export class CategoriesComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  user : Userclass[];
+  categories : Categoriesclass[];
   data: any;
-  // constructor(private activeRoute:ActivatedRoute , public userService:ServicesuserService
-  //   ,private router :Router,private http: HttpClient) { }
 
-    constructor(private http: HttpClient,private router: Router,private servicesuserService :ServicesuserService) { }
+  constructor(private http: HttpClient,private router: Router,private servicescategoriesService :ServicescategoriesService) { }
 
   ngOnInit() {
 
@@ -38,10 +30,10 @@ export class UserComponent implements OnInit {
       ajax: (dataTablesParameters: any, callback) => {
         that.http
           .post<Datatablesclass>(
-            'http://localhost:8080/getAllRestng',
+            'http://localhost:8080/getAllCategories',
             dataTablesParameters, {}
           ).subscribe(resp => {
-          that.user = resp.data;
+          that.categories = resp.data;
 
           callback({
             recordsTotal: resp.recordsTotal,
@@ -50,22 +42,11 @@ export class UserComponent implements OnInit {
           });
         });
       },
-      columns: [{ data: 'name' }, { data: 'lastname' }, { data: 'email' }, { data: 'id' }]
+      columns: [{ data: 'name' }, { data: 'id' }]
     };
-
-
-
-    }
-
-  editUser(id: number) {
-    window.localStorage.removeItem("editUserId");
-    window.localStorage.setItem("editUserId", id.toString());
-    this.router.navigate(['userupdate']);
   }
 
-
-  deleteUser(id: number) {
-
+  deleteCategories(id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -86,7 +67,7 @@ export class UserComponent implements OnInit {
 
       if (result.value) {
 
-        this.servicesuserService.deleteUser(id)
+        this.servicescategoriesService.deleteCategories(id)
           .subscribe( data => {
             $('#datatable').DataTable().ajax.reload();
           })
@@ -107,4 +88,13 @@ export class UserComponent implements OnInit {
       }
     })
   }
+
+
+  editCategories(id: number) {
+    window.localStorage.removeItem("editCategoriesId");
+    window.localStorage.setItem("editCategoriesId", id.toString());
+    this.router.navigate(['categoriesupdate']);
+  }
+
+
 }
