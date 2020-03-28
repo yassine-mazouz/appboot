@@ -17,7 +17,7 @@
             </thead>
             <tbody *ngIf="categories?.length != 0">
             <tr *ngFor="let us of categories">
-              <td>{{ us.name }}</td>
+              <td> <img width="50px" src="data:{{us.type }};base64,{{us.picByte }}" alt="Red dot" />  {{ us.name }}</td>
               <td>
                 <button (click)="deleteCategories(us.id)" class=" btn btn-danger btn-link btn-icon btn-sm btn-simple rounded-circle" style="margin-left: 2%;" type="button" ><i class=" tim-icons icon-simple-remove"></i></button>
                 <button (click)="editCategories(us.id)" style="margin-left: 2% !important;" class=" btn btn-success btn-link btn-icon btn-sm btn-simple rounded-circle" type="button" ><i class=" tim-icons icon-pencil"></i></button>

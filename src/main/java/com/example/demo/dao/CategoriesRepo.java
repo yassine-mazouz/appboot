@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CategoriesRepo extends JpaRepository<Categories,Integer> {
 
@@ -18,4 +20,10 @@ public interface CategoriesRepo extends JpaRepository<Categories,Integer> {
 
     @Query(value = "SELECT * FROM categories WHERE id = :id", nativeQuery = true)
     Categories getOneCategories(int id);
+
+    Optional<Categories> findByName(String imageName);
+    
+    
+    
+    
 }

@@ -15,8 +15,7 @@ export class ServicescategoriesService {
   constructor(private http: HttpClient) {}
 
 
-
-  createCategories( categoriesclass:Categoriesclass) {
+    createCategories(categoriesclass: FormData) {
     return this.http.post(`${this.baseUrl}/createcategories`,categoriesclass,{responseType : 'text' as 'json'});
 
   }
