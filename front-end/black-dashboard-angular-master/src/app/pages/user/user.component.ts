@@ -27,7 +27,6 @@ export class UserComponent implements OnInit {
     constructor(private http: HttpClient,private router: Router,private servicesuserService :ServicesuserService) { }
 
   ngOnInit() {
-
     //Datatable
     const that = this;
     this.dtOptions = {

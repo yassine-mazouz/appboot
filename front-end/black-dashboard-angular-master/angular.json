@@ -27,19 +27,20 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css",
               "src/assets/scss/black-dashboard.scss",
               "src/assets/css/nucleo-icons.css",
               "node_modules/jqueryui/jquery-ui.min.css",
               "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
-              "node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/jqueryui/jquery-ui.min.js",
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.min.js",
               "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
               "node_modules/datatables.net-select/js/dataTables.select.min.js",
@@ -100,10 +101,12 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -153,5 +156,8 @@
       }
     }
   },
-  "defaultProject": "black-dashboard-angular"
+  "defaultProject": "black-dashboard-angular",
+  "cli": {
+    "analytics": "bd1fed85-dcfe-4795-a8ac-890e47552098"
+  }
 }

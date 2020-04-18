@@ -14,6 +14,9 @@ import {LocationupdateComponent} from "../../pages/map/locationupdate/locationup
 import {CategoriesComponent} from "../../pages/categories/categories.component";
 import {CategoriesaddComponent} from "../../pages/categories/categoriesadd/categoriesadd.component";
 import {CategoriesupdateComponent} from "../../pages/categories/categoriesupdate/categoriesupdate.component";
+import {ServicesComponent} from "../../pages/services/services.component";
+import {ServicesaddComponent} from "../../pages/services/servicesadd/servicesadd.component";
+import {ServicesupdateComponent} from "../../pages/services/servicesupdate/servicesupdate.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
@@ -31,6 +34,9 @@ export const AdminLayoutRoutes: Routes = [
   { path: "categories", component: CategoriesComponent },
   { path: "categoriesadd", component: CategoriesaddComponent },
   { path: "categoriesupdate", component: CategoriesupdateComponent },
+  { path: "services", component: ServicesComponent },
+  { path: "servicesadd", component: ServicesaddComponent },
+  { path: "servicesupdate", component: ServicesupdateComponent },
   // { path: "rtl", component: RtlComponent }
 
 ];

@@ -24,6 +24,9 @@ import {LocationupdateComponent} from "../../pages/map/locationupdate/locationup
 import {CategoriesComponent} from "../../pages/categories/categories.component";
 import {CategoriesaddComponent} from "../../pages/categories/categoriesadd/categoriesadd.component";
 import {CategoriesupdateComponent} from "../../pages/categories/categoriesupdate/categoriesupdate.component";
+import {ServicesComponent} from "../../pages/services/services.component";
+import {ServicesaddComponent} from "../../pages/services/servicesadd/servicesadd.component";
+import {ServicesupdateComponent} from "../../pages/services/servicesupdate/servicesupdate.component";
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import {CategoriesupdateComponent} from "../../pages/categories/categoriesupdate
     LocationupdateComponent,
     CategoriesComponent,
     CategoriesaddComponent,
-    CategoriesupdateComponent
+    CategoriesupdateComponent,
+    ServicesComponent,
+    ServicesaddComponent,
+    ServicesupdateComponent
 
 
     // RtlComponent
