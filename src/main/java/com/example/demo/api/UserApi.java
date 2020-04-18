@@ -23,6 +23,12 @@ public class UserApi {
     UserRepo userRepo;
 
 
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    public List<User> getUser(){
+        return  userRepo.findAll();
+    }
+    
+
     @RequestMapping(value = "/getAllRestng", method = RequestMethod.POST)
     public ResponseEntity<DataTable> getAllRestng(@RequestBody Map<String, Object> payload){
         Map<String, Object> model = new HashMap<>();
@@ -93,6 +99,15 @@ public class UserApi {
         user.setPassword(user.getPassword());
         user.setConfirmpassword(user.getConfirmpassword());
         user.setRole(user.getRole());
+        user.setAdress(user.getAdress());
+        user.setBgcolor(user.getBgcolor());
+        user.setFacebook(user.getFacebook());
+        user.setTwitter(user.getTwitter());
+        user.setGoogle(user.getGoogle());
+        user.setPhone(user.getPhone());
+        user.setImageurl(user.getImageurl());
+        user.setSalaire(user.getSalaire());
+        
         userRepo.save(user);
         return "Hi "+user.getName()+" User updated successfully.";
     }

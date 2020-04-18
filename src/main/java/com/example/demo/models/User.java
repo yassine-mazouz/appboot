@@ -23,7 +23,23 @@ public class User {
     @Column(name = "role", nullable = true)
     private String role;
     @Column(name = "deleted", nullable = true)
-    private String deleted;
+    private String deleted;   
+    @Column(name = "facebook", nullable = true)
+    private String facebook;   
+    @Column(name = "twitter", nullable = true)
+    private String twitter;    
+    @Column(name = "google", nullable = true)
+    private String google;
+    @Column(name = "bgcolor", nullable = true)
+    private String bgcolor;
+    @Column(name = "phone", nullable = true)
+    private String phone;    
+    @Column(name = "adress", nullable = true)
+    private String adress;
+    @Column(name = "salaire", nullable = true)
+    private String salaire;
+    @Column(name = "imageurl", nullable = true)
+    private String imageurl; 
 
 
     public int getId() {
@@ -88,5 +104,69 @@ public class User {
 
     public void setConfirmpassword(String confirmpassword) {
         this.confirmpassword = confirmpassword;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getGoogle() {
+        return google;
+    }
+
+    public void setGoogle(String google) {
+        this.google = google;
+    }
+
+    public String getBgcolor() {
+        return bgcolor;
+    }
+
+    public void setBgcolor(String bgcolor) {
+        this.bgcolor = bgcolor;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getSalaire() {
+        return salaire;
+    }
+
+    public void setSalaire(String salaire) {
+        this.salaire = salaire;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 }
