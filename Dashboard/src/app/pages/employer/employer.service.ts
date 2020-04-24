@@ -8,8 +8,10 @@ import {Userclass} from "../../class/userclass";
 @Injectable({
     providedIn: 'root'
 })
-export class EmployerService {
+export class EmployerService  {
     public baseUrl = 'http://localhost:8080';
+    public currentuser : any;
+    
     constructor(public http:HttpClient) { }
     
   
@@ -21,15 +23,32 @@ export class EmployerService {
     }
 
 
-/*    addUser(user:EmployerData){	    
-        return this.http.post(this.url, user);
+    createUser(userclass:Userclass )
+    {
+        return this.http.post(`${this.baseUrl}/createuser`,userclass,{responseType : 'text' as 'json'});
     }
 
-    updateUser(user:EmployerData){
-        return this.http.put(this.url, user);
+    getUserById(id: string): Observable<any> {
+        return this.http.get<Userclass[]>(`${this.baseUrl}/GetOneUserRest/`+id);
     }
 
-    deleteUser(id: number) {
-        return this.http.delete(this.url + "/" + id);
-    } */
+    updateUser(userclass:Userclass ) {
+        return this.http.post<Userclass[]>(`${this.baseUrl}/updateuser/`+userclass.id, userclass,{responseType : 'text' as 'json'});
+
+    }
+
+    deleteUser(id: number): Observable<any>  {
+        return this.http.post<Userclass[]>(`${this.baseUrl}/deleteUserRest/`+id,{responseType : 'text' as 'json'});
+
+    }
+
+    checkmail(val: string | number | string[]): Observable<any>  {
+        return this.http.get<Userclass[]>(`${this.baseUrl}/chackmail/`+val);
+    }
+
+
+    checkmailedit(val: string | number | string[], val2: string | number | string[]) {
+        return this.http.get<Userclass[]>(`${this.baseUrl}/checkmailedit/`+val+'/'+val2);
+
+    }
 } 

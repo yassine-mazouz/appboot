@@ -7,7 +7,7 @@ export class Userclass {
   password : string;
   confirmpassword : string;
   role : string;  
-  adresse : string;
+  adress : string;
   bgcolor : string;
   facebook :string;
   twitter : string;

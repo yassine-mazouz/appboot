@@ -1,0 +1,99 @@
+<h1 mat-dialog-title><span *ngIf="!user.id">Add</span><span *ngIf="user.id">Edit</span> user</h1>
+
+
+
+<div mat-dialog-content>
+    <form  [formGroup]="form" class="user-form" >      
+                <div fxLayout="column" class="form-field-outer">
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>person</mat-icon> Email</mat-placeholder>
+                        <input matInput formControlName="email" [(ngModel)]="user.email"  required >
+                        <mat-error *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
+                        <mat-error *ngIf="form.controls.email.hasError('minlength')">Email isn't long enough, minimum of 5 characters</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>vpn_key</mat-icon> Password</mat-placeholder>
+                        <input matInput formControlName="password" required [type]="passwordHide ? 'password' : 'text'">
+                        <mat-icon matSuffix (click)="passwordHide = !passwordHide">{{passwordHide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                        <mat-error *ngIf="form.controls.password.errors?.required">Password is required</mat-error>
+                        <mat-error *ngIf="form.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>person</mat-icon> Nom</mat-placeholder>
+                        <input matInput formControlName="id"  [(ngModel)]="user.id"  hidden>
+                        <input matInput formControlName="name"  [(ngModel)]="user.name" required>
+                        <mat-error *ngIf="form.controls.name.errors?.required">Nom is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>person</mat-icon> Prénom</mat-placeholder>
+                        <input matInput formControlName="lastname"  [(ngModel)]="user.lastname" required>
+                        <mat-error *ngIf="form.controls.lastname.errors?.required">Prénom is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        
+                        <mat-select placeholder="Choose Rôle"  [(ngModel)]="user.role" formControlName="role" name="role">
+                            <mat-option  value="0">
+                                User
+                            </mat-option>
+                            <mat-option  value="1">
+                               Admin
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Salaire"  [(ngModel)]="user.salaire" formControlName="salaire" required>
+                        <span matPrefix>$&nbsp;</span>
+                        <span matSuffix>.00</span>
+                        <mat-error *ngIf="form.controls.salaire.errors?.required">Salaire is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>phone</mat-icon> Téléphone</mat-placeholder>
+                        <input matInput formControlName="phone"  [(ngModel)]="user.phone"  type="number" required>
+                        <mat-error *ngIf="form.controls.phone.errors?.required">Phone is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>social</mat-icon> Facebook</mat-placeholder>
+                        <input matInput formControlName="facebook"  [(ngModel)]="user.facebook" >
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>social</mat-icon> Twitter</mat-placeholder>
+                        <input matInput formControlName="twitter"  [(ngModel)]="user.twitter" >
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>google</mat-icon> Google</mat-placeholder>
+                        <input matInput formControlName="google"  [(ngModel)]="user.google" >
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>address</mat-icon> Adress</mat-placeholder>
+                        <input matInput formControlName="adress"  [(ngModel)]="user.address"  required>
+                        <mat-error *ngIf="form.controls.adress.errors?.required">Adresee is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <mat-placeholder><mat-icon>image</mat-icon> Image</mat-placeholder>
+                        <input matInput formControlName="imageurl"  [(ngModel)]="user.imageurl">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="Choose bg color" formControlName="bgcolor"  [(ngModel)]="user.bgcolor"  name="bgcolor">
+                            <mat-option *ngFor="let color of colors" [value]="color.value">
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                    <div class="p-2" [ngClass]="color.value"></div>
+                                    <span class="mx-3">{{color.viewValue}}</span>
+                                </div>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+       <!-- <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+            <button class=" btn btn-fill btn-danger"  type="submit" mat-raised-button color="primary" >Save</button>
+            &lt;!&ndash;<button type="submit" mat-raised-button color="primary" [mat-dialog-close]="form.value" [disabled]="!form.valid"><span *ngIf="!user.id">Save</span><span *ngIf="user.id">Update</span></button>&ndash;&gt;
+            <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+        </div>-->
+    </form>
+</div>
+
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-raised-button color="primary" (click)="save()"  [mat-dialog-close]="form.value" [disabled]="!form.valid"><span *ngIf="!user.id">Save</span><span *ngIf="user.id">Update</span></button>
+        <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+    </div>
+
+

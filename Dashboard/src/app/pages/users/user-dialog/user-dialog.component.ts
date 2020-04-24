@@ -68,14 +68,14 @@ export class UserDialogComponent implements OnInit {
     if(this.user){
       this.form.setValue(this.user);
     } 
-    else{
+   /* else{
       this.user = new User();
       this.user.profile = new UserProfile();
       this.user.work = new UserWork();
       this.user.contacts = new UserContacts();
       this.user.social = new UserSocial();
       this.user.settings = new UserSettings();
-    } 
+    } */
   }
 
   close(): void {

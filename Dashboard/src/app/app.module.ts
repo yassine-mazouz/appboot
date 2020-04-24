@@ -37,6 +37,8 @@ import { ApplicationsComponent } from './theme/components/applications/applicati
 import { MessagesComponent } from './theme/components/messages/messages.component';
 import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
 import { FavoritesComponent } from './theme/components/favorites/favorites.component';
+import {HttpClientModule} from "@angular/common/http";
+
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { FavoritesComponent } from './theme/components/favorites/favorites.compo
     PerfectScrollbarModule,     
     CalendarModule.forRoot(),
     SharedModule,
+    HttpClientModule,
     PipesModule,
     routing
   ],

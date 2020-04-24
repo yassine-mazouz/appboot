@@ -13,3 +13,11 @@
 @import "app/theme/styles/theme";
 @import "app/theme/styles/gradients";
 @import "app/theme/styles/rtl";
+
+
+.content-header[_ngcontent-c32] h1[_ngcontent-c32] {
+  font-size: 20px  !important;
+}
+.content-header.bg-primary.pb-5.bg-image {
+  height: 100px !important;
+}

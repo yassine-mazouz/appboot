@@ -7,8 +7,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../theme/pipes/pipes.module';
 import {EmployerComponent} from "./employer.component";
+import {UserDialogComponent} from "./user-dialog/user-dialog.component";
+import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {EmployerData} from "./employer.data";
-import {UserSearchPipe} from "../../theme/pipes/search/user-search.pipe";
 
 
 export const routes = [
@@ -18,18 +19,20 @@ export const routes = [
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(EmployerData, { delay: 500 }),
     NgxPaginationModule,
     SharedModule,
-    PipesModule,
+    PipesModule
   ],
   declarations: [
-    EmployerComponent
+    EmployerComponent,
+    UserDialogComponent
   ],
   entryComponents:[
+    UserDialogComponent
   ]
 })
 export class EmployerModule { }
